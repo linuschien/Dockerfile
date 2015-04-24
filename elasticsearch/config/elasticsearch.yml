@@ -1,0 +1,29 @@
+cluster.name: linus-lab-elasticsearch
+
+path.data: /data/data
+path.work: /data/work
+path.logs: /data/logs
+#path.plugins: /config/plugins
+
+bootstrap.mlockall: true
+
+network.publish_host: 172.17.18.124
+#http.publish_port: 9201
+#transport.publish_port: 9301
+
+discovery.zen.minimum_master_nodes: 3
+#discovery.zen.ping.timeout: 3s
+discovery.zen.ping.multicast.enabled: false
+discovery.zen.ping.unicast.hosts: ["172.17.18.124:9301", "172.17.18.124:9302", "172.17.18.124:9303", "172.17.18.124:9304"]
+
+gateway.recover_after_nodes: 3
+gateway.expected_nodes: 4
+gateway.recover_after_time: 1m
+
+index.number_of_shards: 2
+#index.number_of_replicas: 1
+index.store.type: mmapfs
+indices.fielddata.cache.size: 60%
+indices.breaker.fielddata.limit: 60%
+
+marvel.agent.exporter.es.hosts: ["172.17.18.124:9201", "172.17.18.124:9202", "172.17.18.124:9203", "172.17.18.124:9204"]
